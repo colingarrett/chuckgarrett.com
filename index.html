@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="In loving memory of Chuck Garrett (1968–2026) — devoted husband, father, business owner, and friend.">
   <title>Chuck Garrett (1968–2026)</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
     :root { color-scheme: light; }
-    html { font-size: 18px; }
+    html { font-size: 18px; background: #fbfaf7; }
     body {
       max-width: 62ch;
       margin: 0 auto;
@@ -15,7 +16,7 @@
       font-family: Georgia, Cambria, "Times New Roman", Times, serif;
       line-height: 1.7;
       color: #1f1d1a;
-      background: #fbfaf7;
+      background: transparent;
     }
     header { text-align: center; margin-bottom: 2rem; }
     .eyebrow {
@@ -52,13 +53,17 @@
       margin-top: 0.6rem;
     }
     main p { margin: 0 0 1.15rem; }
-    hr {
-      border: none;
-      border-top: 1px solid #e6e1d8;
-      width: 4rem;
+    .closing { text-align: center; font-style: italic; color: #4a443c; }
+
+    .flower-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       margin: 2.5rem auto;
     }
-    .closing { text-align: center; font-style: italic; color: #4a443c; }
+    .flower-divider .line { height: 1px; width: 52px; background: #e2dac9; }
+    .flower-divider svg { display: block; }
 
     /* Gallery */
     .gallery-section { margin-top: 3.5rem; }
@@ -85,6 +90,25 @@
       text-align: center;
       font-size: 0.82rem;
       color: #9a9082;
+    }
+
+    /* Plumeria petals + cursor trail (gentle, optional) */
+    @keyframes fall { from { top: -8%; } to { top: 108%; } }
+    @keyframes spin {
+      0% { transform: translateX(0) rotate(0deg); }
+      50% { transform: translateX(14px) rotate(180deg); }
+      100% { transform: translateX(0) rotate(360deg); }
+    }
+    @keyframes tfade {
+      from { opacity: 0.8; }
+      to { opacity: 0; transform: translate(-50%, -50%) scale(0.45) rotate(70deg); }
+    }
+    .petal-layer { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+    .trail-layer { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 50; }
+    .fp { position: absolute; will-change: top, transform; }
+    .tp { position: fixed; transform: translate(-50%, -50%); }
+    @media (prefers-reduced-motion: reduce) {
+      .petal-layer, .trail-layer { display: none !important; }
     }
   </style>
 </head>
@@ -122,7 +146,13 @@
 
     <p>He was a devoted and loyal husband, incredible and loving father, the fun uncle, and a great friend to so many. He was a father figure to so many, including his nieces, nephews, and &ldquo;bonus daughter,&rdquo; Clementine.</p>
 
-    <hr>
+    <div class="flower-divider" aria-hidden="true">
+      <span class="line"></span>
+      <svg width="30" height="30" viewBox="-50 -50 100 100"><g fill="#b692d6" stroke="#9670c0" stroke-width="1.2"><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(0)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(72)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(144)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(216)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(288)"/></g><circle r="11" fill="#f3c95d"/><circle r="5.5" fill="#edb23c"/></svg>
+      <svg width="36" height="36" viewBox="-50 -50 100 100"><defs><radialGradient id="divrnbw" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="46"><stop offset="0%" stop-color="#f7d35e"/><stop offset="42%" stop-color="#f3a456"/><stop offset="100%" stop-color="#e7657f"/></radialGradient></defs><g fill="url(#divrnbw)" stroke="#e3977f" stroke-width="1.2"><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(0)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(72)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(144)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(216)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(288)"/></g><circle r="11" fill="#f2c14e"/><circle r="5.5" fill="#ec9d3a"/></svg>
+      <svg width="30" height="30" viewBox="-50 -50 100 100"><g fill="#f8d977" stroke="#e3bd50" stroke-width="1.2"><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(0)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(72)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(144)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(216)"/><path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(288)"/></g><circle r="11" fill="#f0b840"/><circle r="5.5" fill="#e0922a"/></svg>
+      <span class="line"></span>
+    </div>
 
     <p class="closing">He is survived by his wife, children, and sister Laura. His family will forever carry his love, strength, and joy for life. He will be missed every day until we join him in Heaven with our Lord Jesus Christ.</p>
   </main>
@@ -190,5 +220,74 @@
   <footer>
     <p>In loving memory of Chuck Garrett &middot; 1968 &ndash; 2026</p>
   </footer>
+
+  <script>
+  (function () {
+    var mm = window.matchMedia;
+    if (mm && mm("(prefers-reduced-motion: reduce)").matches) return;
+    var R = Math.random;
+    var U = 0;
+    var V = [
+      { p: "#fffdf6", e: "#e7dcc6", a: "#f4c95d", b: "#eeb43c" },
+      { p: "#f8d977", e: "#e3bd50", a: "#f0b840", b: "#e0922a" },
+      { p: "#f3b3cc", e: "#e491b2", a: "#f6cf6a", b: "#efb13f" },
+      { p: "#b692d6", e: "#9670c0", a: "#f3c95d", b: "#edb23c" },
+      { p: "#f4a583", e: "#e07f5c", a: "#f6cf6a", b: "#efb13f" },
+      { rainbow: true, e: "#e3977f", a: "#f2c14e", b: "#ec9d3a" }
+    ];
+    function flower(s, v) {
+      var id = ++U, defs = "", fill;
+      if (v.rainbow) {
+        fill = "url(#fg" + id + ")";
+        defs = '<defs><radialGradient id="fg' + id + '" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="46"><stop offset="0%" stop-color="#f7d35e"/><stop offset="42%" stop-color="#f3a456"/><stop offset="100%" stop-color="#e7657f"/></radialGradient></defs>';
+      } else { fill = v.p; }
+      var rot = [0, 72, 144, 216, 288], paths = "";
+      for (var i = 0; i < 5; i++) {
+        paths += '<path d="M0 7 C -18 -3 -12 -40 2 -46 C 12 -40 14 -7 0 7 Z" transform="rotate(' + rot[i] + ')"/>';
+      }
+      return '<svg width="' + s + '" height="' + s + '" viewBox="-50 -50 100 100" aria-hidden="true">' + defs +
+        '<g fill="' + fill + '" stroke="' + v.e + '" stroke-width="1.2">' + paths + "</g>" +
+        '<circle r="11" fill="' + v.a + '"/><circle r="5.5" fill="' + v.b + '"/></svg>';
+    }
+    function pick() { return V[(R() * V.length) | 0]; }
+
+    var pl = document.createElement("div");
+    pl.className = "petal-layer";
+    pl.setAttribute("aria-hidden", "true");
+    document.body.appendChild(pl);
+    for (var i = 0; i < 8; i++) {
+      var d = document.createElement("div");
+      d.className = "fp";
+      var sz = 16 + R() * 18;
+      d.style.left = (R() * 100) + "%";
+      d.style.opacity = (0.3 + R() * 0.3).toFixed(2);
+      d.innerHTML = flower(sz, pick());
+      var fd = (11 + R() * 9).toFixed(1), sp = (4 + R() * 3).toFixed(1), de = (-R() * 20).toFixed(1);
+      d.style.animation = "fall " + fd + "s linear " + de + "s infinite, spin " + sp + "s ease-in-out " + de + "s infinite";
+      pl.appendChild(d);
+    }
+
+    if (mm && mm("(pointer: fine)").matches) {
+      var tl = document.createElement("div");
+      tl.className = "trail-layer";
+      tl.setAttribute("aria-hidden", "true");
+      document.body.appendChild(tl);
+      var last = 0;
+      window.addEventListener("mousemove", function (e) {
+        var now = Date.now();
+        if (now - last < 60) return;
+        last = now;
+        var t = document.createElement("div");
+        t.className = "tp";
+        t.style.left = e.clientX + "px";
+        t.style.top = e.clientY + "px";
+        t.style.animation = "tfade 1.1s ease-out forwards";
+        t.innerHTML = flower(18 + R() * 10, pick());
+        t.addEventListener("animationend", function () { t.remove(); });
+        tl.appendChild(t);
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
