@@ -27,15 +27,24 @@
     }
     h1 { font-size: 2.1rem; line-height: 1.15; margin: 0 0 0.4rem; font-weight: normal; }
     .dates { color: #6b6357; font-style: italic; margin: 0; }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #8a7f6f;
+      text-align: center;
+      margin: 0 0 1.25rem;
+    }
     figure { margin: 0 0 2.25rem; }
-    figure img {
+    .hero img {
       display: block;
       width: 100%;
       height: auto;
       border-radius: 2px;
       box-shadow: 0 1px 12px rgba(0,0,0,0.12);
     }
-    figcaption {
+    .hero figcaption {
       text-align: center;
       font-size: 0.8rem;
       font-style: italic;
@@ -43,7 +52,6 @@
       margin-top: 0.6rem;
     }
     main p { margin: 0 0 1.15rem; }
-    .lead::first-letter { /* gentle, optional emphasis */ }
     hr {
       border: none;
       border-top: 1px solid #e6e1d8;
@@ -51,8 +59,29 @@
       margin: 2.5rem auto;
     }
     .closing { text-align: center; font-style: italic; color: #4a443c; }
+
+    /* Gallery */
+    .gallery-section { margin-top: 3.5rem; }
+    .gallery { columns: 3 160px; column-gap: 0.6rem; }
+    .gallery figure { break-inside: avoid; margin: 0 0 0.6rem; }
+    .gallery a { display: block; }
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.12);
+    }
+    .gallery figcaption {
+      text-align: center;
+      font-size: 0.72rem;
+      font-style: italic;
+      color: #8a7f6f;
+      margin-top: 0.3rem;
+    }
+
     footer {
-      margin-top: 3rem;
+      margin-top: 3.5rem;
       text-align: center;
       font-size: 0.82rem;
       color: #9a9082;
@@ -66,8 +95,8 @@
     <p class="dates">February 13, 1968 &ndash; June 17, 2026</p>
   </header>
 
-  <figure>
-    <img src="chuck-and-colin-1998.jpg"
+  <figure class="hero">
+    <img src="photos/chuck-and-colin-1998.webp"
          alt="Chuck Garrett and his son Colin standing together at the shoreline, watching the waves, summer 1998.">
     <figcaption>Chuck and Colin at the beach, summer 1998.</figcaption>
   </figure>
@@ -97,6 +126,60 @@
 
     <p class="closing">He is survived by his wife, children, and sister Laura. His family will forever carry his love, strength, and joy for life. He will be missed every day until we join him in Heaven with our Lord Jesus Christ.</p>
   </main>
+
+  <section class="gallery-section" aria-labelledby="gallery-heading">
+    <h2 id="gallery-heading">A few more memories</h2>
+    <div class="gallery">
+      <figure>
+        <a href="photos/chuck-susan.webp">
+          <img src="photos/chuck-susan.webp" loading="lazy" decoding="async" alt="Chuck and Susan together.">
+        </a>
+        <figcaption>Chuck and Susan</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/chuck-beach.webp">
+          <img src="photos/chuck-beach.webp" loading="lazy" decoding="async" alt="Chuck at the beach.">
+        </a>
+        <figcaption>At the beach</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/chuck-hawaii.webp">
+          <img src="photos/chuck-hawaii.webp" loading="lazy" decoding="async" alt="Chuck in Hawaii.">
+        </a>
+        <figcaption>Hawaii</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/chuck-colin-paddleboard.webp">
+          <img src="photos/chuck-colin-paddleboard.webp" loading="lazy" decoding="async" alt="Chuck and Colin out on paddleboards.">
+        </a>
+        <figcaption>Paddleboarding with Colin</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/colin-brooke-wedding.webp">
+          <img src="photos/colin-brooke-wedding.webp" loading="lazy" decoding="async" alt="Chuck at Colin and Brooke&rsquo;s wedding.">
+        </a>
+        <figcaption>Colin &amp; Brooke&rsquo;s wedding</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/garrett-electric.webp">
+          <img src="photos/garrett-electric.webp" loading="lazy" decoding="async" alt="Garrett Electric, the business Chuck built.">
+        </a>
+        <figcaption>Garrett Electric</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/chuck-riley.webp">
+          <img src="photos/chuck-riley.webp" loading="lazy" decoding="async" alt="Chuck with Riley.">
+        </a>
+        <figcaption>Chuck &amp; Riley</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/chuck-rabbit.webp">
+          <img src="photos/chuck-rabbit.webp" loading="lazy" decoding="async" alt="Chuck holding a rabbit.">
+        </a>
+        <figcaption>Chuck &amp; the rabbit</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <footer>
     <p>In loving memory of Chuck Garrett &middot; 1968 &ndash; 2026</p>

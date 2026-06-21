@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Full-resolution photo backups — kept locally, not deployed
+originals/
