@@ -1,0 +1,67 @@
+{
+  "photos": [
+    {
+      "file": "chuck-susan.webp",
+      "w": 1200,
+      "h": 823,
+      "caption": "Chuck & Susan’s wedding",
+      "alt": "Chuck and Susan on their wedding day."
+    },
+    {
+      "file": "chuck-beach.webp",
+      "w": 1200,
+      "h": 1200,
+      "caption": "At the beach",
+      "alt": "Chuck at the beach."
+    },
+    {
+      "file": "chuck-hawaii.webp",
+      "w": 768,
+      "h": 1024,
+      "caption": "Hawaii",
+      "alt": "Chuck in Hawaii."
+    },
+    {
+      "file": "chuck-colin-paddleboard.webp",
+      "w": 1024,
+      "h": 769,
+      "caption": "Paddleboarding with Colin",
+      "alt": "Chuck and Colin out on paddleboards."
+    },
+    {
+      "file": "colin-brooke-wedding.webp",
+      "w": 724,
+      "h": 1086,
+      "caption": "Colin & Brooke’s wedding",
+      "alt": "Chuck at Colin and Brooke’s wedding."
+    },
+    {
+      "file": "alyssa-abe-wedding.webp",
+      "w": 1086,
+      "h": 724,
+      "caption": "Alyssa & Abe’s wedding",
+      "alt": "Chuck at Alyssa and Abe’s wedding."
+    },
+    {
+      "file": "garrett-electric.webp",
+      "w": 665,
+      "h": 1182,
+      "caption": "Garrett Electric",
+      "alt": "Garrett Electric, the business Chuck built."
+    },
+    {
+      "file": "chuck-riley.webp",
+      "w": 575,
+      "h": 741,
+      "caption": "Chuck & Riley",
+      "alt": "Chuck with Riley."
+    },
+    {
+      "file": "chuck-rabbit.webp",
+      "w": 665,
+      "h": 1182,
+      "caption": "Chuck & the rabbit",
+      "alt": "Chuck holding a rabbit."
+    }
+  ]
+}

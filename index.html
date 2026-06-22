@@ -74,6 +74,7 @@
       display: block;
       width: 100%;
       height: auto;
+      background: #f0ebe1;
       border-radius: 2px;
       box-shadow: 0 1px 8px rgba(0,0,0,0.12);
     }
@@ -159,67 +160,68 @@
 
   <section class="gallery-section" aria-labelledby="gallery-heading">
     <h2 id="gallery-heading">A few more memories</h2>
-    <div class="gallery">
-      <figure>
-        <a href="photos/chuck-susan.webp">
-          <img src="photos/chuck-susan.webp" loading="lazy" decoding="async" alt="Chuck and Susan on their wedding day.">
-        </a>
-        <figcaption>Chuck &amp; Susan&rsquo;s wedding</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/chuck-beach.webp">
-          <img src="photos/chuck-beach.webp" loading="lazy" decoding="async" alt="Chuck at the beach.">
-        </a>
-        <figcaption>At the beach</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/chuck-hawaii.webp">
-          <img src="photos/chuck-hawaii.webp" loading="lazy" decoding="async" alt="Chuck in Hawaii.">
-        </a>
-        <figcaption>Hawaii</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/chuck-colin-paddleboard.webp">
-          <img src="photos/chuck-colin-paddleboard.webp" loading="lazy" decoding="async" alt="Chuck and Colin out on paddleboards.">
-        </a>
-        <figcaption>Paddleboarding with Colin</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/colin-brooke-wedding.webp">
-          <img src="photos/colin-brooke-wedding.webp" loading="lazy" decoding="async" alt="Chuck at Colin and Brooke&rsquo;s wedding.">
-        </a>
-        <figcaption>Colin &amp; Brooke&rsquo;s wedding</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/alyssa-abe-wedding.webp">
-          <img src="photos/alyssa-abe-wedding.webp" loading="lazy" decoding="async" alt="Chuck at Alyssa and Abe&rsquo;s wedding.">
-        </a>
-        <figcaption>Alyssa &amp; Abe&rsquo;s wedding</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/garrett-electric.webp">
-          <img src="photos/garrett-electric.webp" loading="lazy" decoding="async" alt="Garrett Electric, the business Chuck built.">
-        </a>
-        <figcaption>Garrett Electric</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/chuck-riley.webp">
-          <img src="photos/chuck-riley.webp" loading="lazy" decoding="async" alt="Chuck with Riley.">
-        </a>
-        <figcaption>Chuck &amp; Riley</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/chuck-rabbit.webp">
-          <img src="photos/chuck-rabbit.webp" loading="lazy" decoding="async" alt="Chuck holding a rabbit.">
-        </a>
-        <figcaption>Chuck &amp; the rabbit</figcaption>
-      </figure>
-    </div>
+    <div id="gallery" class="gallery"></div>
+    <div id="gallery-sentinel" aria-hidden="true" style="height:1px;"></div>
+    <noscript>
+      <p style="text-align:center;color:#8a7f6f;font-style:italic;">Please enable JavaScript to view the photo gallery.</p>
+    </noscript>
   </section>
 
   <footer>
     <p>In loving memory of Chuck Garrett &middot; 1968 &ndash; 2026</p>
   </footer>
+
+  <script>
+  (function () {
+    var grid = document.getElementById("gallery");
+    if (!grid) return;
+    var sentinel = document.getElementById("gallery-sentinel");
+    var BATCH = 16, idx = 0, photos = [], obs = null;
+    function makeFigure(p) {
+      var fig = document.createElement("figure");
+      var a = document.createElement("a");
+      a.href = "photos/" + p.file;
+      var img = document.createElement("img");
+      img.src = "photos/thumbs/" + p.file;
+      img.loading = "lazy";
+      img.decoding = "async";
+      if (p.w && p.h) { img.width = p.w; img.height = p.h; img.style.aspectRatio = p.w + " / " + p.h; }
+      img.alt = p.alt || p.caption || "";
+      a.appendChild(img);
+      fig.appendChild(a);
+      if (p.caption) {
+        var cap = document.createElement("figcaption");
+        cap.textContent = p.caption;
+        fig.appendChild(cap);
+      }
+      return fig;
+    }
+    function renderNext() {
+      var end = Math.min(idx + BATCH, photos.length);
+      var frag = document.createDocumentFragment();
+      for (; idx < end; idx++) frag.appendChild(makeFigure(photos[idx]));
+      grid.appendChild(frag);
+      if (idx >= photos.length && obs) obs.disconnect();
+    }
+    fetch("photos.json", { cache: "no-cache" })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        photos = (data && data.photos) || [];
+        renderNext();
+        if ("IntersectionObserver" in window && idx < photos.length) {
+          obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) renderNext(); });
+          }, { rootMargin: "800px 0px" });
+          obs.observe(sentinel);
+        } else {
+          while (idx < photos.length) renderNext();
+        }
+      })
+      .catch(function () {
+        grid.innerHTML = '<p style="text-align:center;color:#8a7f6f;font-style:italic;">Photos couldn&rsquo;t be loaded.</p>';
+      });
+  })();
+  </script>
 
   <script>
   (function () {
